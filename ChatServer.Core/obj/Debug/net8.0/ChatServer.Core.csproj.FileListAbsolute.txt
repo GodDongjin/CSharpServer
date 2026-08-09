@@ -1,0 +1,11 @@
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ChatServer.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ChatServer.Core.AssemblyInfoInputs.cache
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ChatServer.Core.AssemblyInfo.cs
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ChatServer.Core.csproj.CoreCompileInputs.cache
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\bin\Debug\net8.0\ChatServer.Core.deps.json
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\bin\Debug\net8.0\ChatServer.Core.dll
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\bin\Debug\net8.0\ChatServer.Core.pdb
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ChatServer.Core.dll
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\refint\ChatServer.Core.dll
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ChatServer.Core.pdb
+C:\Users\ppa01\Desktop\C#_Socket_Server\CSharpChatServer\ChatServer.Core\obj\Debug\net8.0\ref\ChatServer.Core.dll

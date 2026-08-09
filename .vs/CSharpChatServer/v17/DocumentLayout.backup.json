@@ -1,0 +1,547 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A6F0A55-535D-447D-8FF2-838BC3DF629D}|TestClient\\TestClient.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\testclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A6F0A55-535D-447D-8FF2-838BC3DF629D}|TestClient\\TestClient.csproj|solutionrelative:testclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\packet\\gspacketstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\packet\\gspacketstruct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\packet\\gspackethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\packet\\gspackethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\chatsession\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\chatsession\\gamesession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\packet\\packethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\packet\\packethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\interface\\ipackethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\interface\\ipackethandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\sessionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\listen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\listen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\room\\roommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\room\\roommanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\room\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\room\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.app\\packet\\gspacketenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E6107F7-D8A6-4A30-AE30-BBA3CC25AC4C}|ChatServer.App\\ChatServer.App.csproj|solutionrelative:chatserver.app\\packet\\gspacketenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\packet\\packetutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\packet\\packetutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\buffermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\buffermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\sockethearbeat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\sockethearbeat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\socketasynceventargspool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\socketasynceventargspool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\socketutile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\socketutile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\interface\\isessionowner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\interface\\isessionowner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\chatserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\chatserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\asyncmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\asyncmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\connectionmanagerdemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\connectionmanagerdemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\packetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\packetmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\chatserver.core.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\chatserver.core.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\chatserver.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\chatserver.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\buffermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\buffermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\c#_server_study\\threadentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5090E3A4-944B-49AA-A6E6-5B0C04EF010D}|C#_Server_Study\\C#_Server_Study.csproj|solutionrelative:c#_server_study\\threadentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\network\\tcpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\network\\tcpserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\singleton\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\singleton\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|c:\\users\\ppa01\\desktop\\c#_socket_server\\csharpchatserver\\chatserver.core\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDEF611E-F0BE-429A-BB4D-67DEF2E035EA}|ChatServer.Core\\ChatServer.Core.csproj|solutionrelative:chatserver.core\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 185,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SocketUtile.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SocketUtile.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\SocketUtile.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SocketUtile.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\SocketUtile.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwB0AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T10:13:06.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GameSession.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\ChatSession\\GameSession.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\ChatSession\\GameSession.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\ChatSession\\GameSession.cs",
+              "RelativeToolTip": "ChatServer.App\\ChatSession\\GameSession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T07:31:17.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RoomManager.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Room\\RoomManager.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\Room\\RoomManager.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Room\\RoomManager.cs",
+              "RelativeToolTip": "ChatServer.App\\Room\\RoomManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T07:29:16.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Listen.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\Listen.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\Listen.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\Listen.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\Listen.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAmwGcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:55:27.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GSPacketHandler.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Packet\\GSPacketHandler.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\Packet\\GSPacketHandler.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Packet\\GSPacketHandler.cs",
+              "RelativeToolTip": "ChatServer.App\\Packet\\GSPacketHandler.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAtwFIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T07:26:44.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GSPacketStruct.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Packet\\GSPacketStruct.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\Packet\\GSPacketStruct.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Packet\\GSPacketStruct.cs",
+              "RelativeToolTip": "ChatServer.App\\Packet\\GSPacketStruct.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T07:32:43.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Program.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\Program.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Program.cs",
+              "RelativeToolTip": "ChatServer.App\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T00:26:34.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IPacketHandler.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Interface\\IPacketHandler.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Interface\\IPacketHandler.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Interface\\IPacketHandler.cs",
+              "RelativeToolTip": "ChatServer.Core\\Interface\\IPacketHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T07:06:29.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Session.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\Session.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\Session.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\Session.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\Session.cs",
+              "ViewState": "AgIAADIBAAAAAAAAAAAewBoBAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T06:37:40.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SessionManager.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SessionManager.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\SessionManager.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SessionManager.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\SessionManager.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAcwCkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T06:40:52.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Service.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\Service.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\Service.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\Service.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\Service.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAzwD4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T00:45:48.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\TestClient\\Program.cs",
+              "RelativeDocumentMoniker": "TestClient\\Program.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\TestClient\\Program.cs",
+              "RelativeToolTip": "TestClient\\Program.cs",
+              "ViewState": "AgIAAFIBAAAAAAAAAAAowFABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T07:27:56.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PacketHandler.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Packet\\PacketHandler.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Packet\\PacketHandler.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Packet\\PacketHandler.cs",
+              "RelativeToolTip": "ChatServer.Core\\Packet\\PacketHandler.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAIAzwCUAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T00:12:16.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SocketAsyncEventArgsPool.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SocketAsyncEventArgsPool.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\SocketAsyncEventArgsPool.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SocketAsyncEventArgsPool.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\SocketAsyncEventArgsPool.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwDAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T00:28:35.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PacketUtil.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Packet\\PacketUtil.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Packet\\PacketUtil.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Packet\\PacketUtil.cs",
+              "RelativeToolTip": "ChatServer.Core\\Packet\\PacketUtil.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAzwDkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-30T12:17:46.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Room.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Room\\Room.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\Room\\Room.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Room\\Room.cs",
+              "RelativeToolTip": "ChatServer.App\\Room\\Room.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwG0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-29T06:50:27.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BufferManager.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\BufferManager.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\BufferManager.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\BufferManager.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\BufferManager.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T06:39:18.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SocketHearBeat.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SocketHearBeat.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\SocketHearBeat.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\SocketHearBeat.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\SocketHearBeat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T06:31:12.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GSPacketEnum.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Packet\\GSPacketEnum.cs",
+              "RelativeDocumentMoniker": "ChatServer.App\\Packet\\GSPacketEnum.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.App\\Packet\\GSPacketEnum.cs",
+              "RelativeToolTip": "ChatServer.App\\Packet\\GSPacketEnum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-04T08:13:00.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AsyncModel.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\AsyncModel.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\AsyncModel.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\AsyncModel.cs",
+              "RelativeToolTip": "C#_Server_Study\\AsyncModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-21T00:24:17.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ISessionOwner.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Interface\\ISessionOwner.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Interface\\ISessionOwner.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Interface\\ISessionOwner.cs",
+              "RelativeToolTip": "ChatServer.Core\\Interface\\ISessionOwner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-28T07:33:04.928Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "BufferManager.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\BufferManager.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\BufferManager.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\BufferManager.cs",
+              "RelativeToolTip": "C#_Server_Study\\BufferManager.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAwLEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-23T07:06:31.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ConnectionManagerDemo.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\ConnectionManagerDemo.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\ConnectionManagerDemo.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\ConnectionManagerDemo.cs",
+              "RelativeToolTip": "C#_Server_Study\\ConnectionManagerDemo.cs",
+              "ViewState": "AgIAAP0AAAAAAAAAAAAcwB4BAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-22T00:30:35.503Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ChatServer.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\ChatServer.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\ChatServer.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\ChatServer.cs",
+              "RelativeToolTip": "C#_Server_Study\\ChatServer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAM0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-20T06:40:57.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "PacketManager.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\PacketManager.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\PacketManager.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\PacketManager.cs",
+              "RelativeToolTip": "C#_Server_Study\\PacketManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T08:19:09.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\Program.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\Program.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\Program.cs",
+              "RelativeToolTip": "C#_Server_Study\\Program.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwBEAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T07:17:11.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ChatServer.Core",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\ChatServer.Core.csproj",
+              "RelativeDocumentMoniker": "ChatServer.Core\\ChatServer.Core.csproj",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\ChatServer.Core.csproj",
+              "RelativeToolTip": "ChatServer.Core\\ChatServer.Core.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-28T13:42:45.747Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ChatServer.Core.csproj",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\ChatServer.Core.csproj",
+              "RelativeDocumentMoniker": "ChatServer.Core\\ChatServer.Core.csproj",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\ChatServer.Core.csproj",
+              "RelativeToolTip": "ChatServer.Core\\ChatServer.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-16T06:17:06.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ThreadEntity.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\ThreadEntity.cs",
+              "RelativeDocumentMoniker": "C#_Server_Study\\ThreadEntity.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\C#_Server_Study\\ThreadEntity.cs",
+              "RelativeToolTip": "C#_Server_Study\\ThreadEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-20T05:53:39.74Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Singleton.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Singleton\\Singleton.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Singleton\\Singleton.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Singleton\\Singleton.cs",
+              "RelativeToolTip": "ChatServer.Core\\Singleton\\Singleton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T06:43:07.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Main.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Main.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Main.cs",
+              "RelativeToolTip": "ChatServer.Core\\Main.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-16T07:55:00.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "TcpServer.cs",
+              "DocumentMoniker": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\TcpServer.cs",
+              "RelativeDocumentMoniker": "ChatServer.Core\\Network\\TcpServer.cs",
+              "ToolTip": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\Network\\TcpServer.cs",
+              "RelativeToolTip": "ChatServer.Core\\Network\\TcpServer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T08:24:21.569Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

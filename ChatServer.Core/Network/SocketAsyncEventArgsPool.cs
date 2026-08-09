@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ChatServer.Core.Network
+{
+    public class SocketAsyncEventArgsPool
+    {
+        private readonly Stack<SocketAsyncEventArgs> _pool;
+
+        public SocketAsyncEventArgsPool(int capacity)
+        {
+            _pool = new Stack<SocketAsyncEventArgs>(capacity);
+        }
+
+        public void Push(SocketAsyncEventArgs item)
+        {
+            if (item == null)
+                return;
+
+            lock (_pool)
+            {
+                _pool.Push(item);
+            }
+        }
+
+        public SocketAsyncEventArgs Pop()
+        {
+            lock (_pool)
+            {
+                if (_pool.Count > 0)
+                {
+                    return _pool.Pop();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                lock (_pool)
+                {
+                    return (_pool.Count);
+                }
+            }
+        }
+    }
+}

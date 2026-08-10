@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aUOqUz2DYR8=",
+  "dgSpecHash": "aU/Lk5F0yUI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ppa01\\Desktop\\C#_Socket_Server\\CSharpChatServer\\ChatServer.Core\\ChatServer.Core.csproj",
+  "projectFilePath": "C:\\Main\\ChatServer.Core\\ChatServer.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

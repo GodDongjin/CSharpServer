@@ -12,7 +12,7 @@ namespace ChatServer.Core.Network
     public sealed class Listen
     {
         private Socket? _listenSocket;
-        //readonly SocketUtile _socketUtile = new SocketUtile();
+        readonly SocketUtile _socketUtile = new SocketUtile();
 
         //readonly = 읽기만 가능한 변수라고 선언하는 키워드.
         private readonly IPEndPoint _iPEndPoint;
@@ -89,6 +89,12 @@ namespace ChatServer.Core.Network
                 }
                 else
                 {
+                    // 소켓 옵션 설정.
+                    _socketUtile.SocketReuse(e.AcceptSocket, false);
+                    _socketUtile.SocketNoDelay(e.AcceptSocket, true);
+                    _socketUtile.SocketKeepAlive(e.AcceptSocket, true);
+
+                    // 소켓 생성.
                     Session session = _serivce.SessionManager.CreateSession(e.AcceptSocket, readEventArgs, writeEventArgs, _serivce as ISessionOwner, _serivce.PacketHandler as IPacketHandler);
 
                     if(session == null)

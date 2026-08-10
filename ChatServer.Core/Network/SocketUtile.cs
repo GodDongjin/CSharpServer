@@ -35,7 +35,7 @@ namespace ChatServer.Core.Network
         }
 
         // Nagle 알고리즘 사용 여부 옵션
-        public void SocketNagle(Socket? socket, bool flag = false)
+        public void SocketNoDelay(Socket? socket, bool flag = false)
         {
             ArgumentNullException.ThrowIfNull(socket);
 

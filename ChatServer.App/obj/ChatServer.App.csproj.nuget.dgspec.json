@@ -396,6 +396,16 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.6.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

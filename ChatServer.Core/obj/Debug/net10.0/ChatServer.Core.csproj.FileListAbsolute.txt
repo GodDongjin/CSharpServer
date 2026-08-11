@@ -1,0 +1,13 @@
+C:\Main\ChatServer.Core\bin\Debug\net10.0\ChatServer.Core.deps.json
+C:\Main\ChatServer.Core\bin\Debug\net10.0\ChatServer.Core.dll
+C:\Main\ChatServer.Core\bin\Debug\net10.0\ChatServer.Core.pdb
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.csproj.AssemblyReference.cache
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.AssemblyInfoInputs.cache
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.AssemblyInfo.cs
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.csproj.CoreCompileInputs.cache
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.sourcelink.json
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.dll
+C:\Main\ChatServer.Core\obj\Debug\net10.0\refint\ChatServer.Core.dll
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ChatServer.Core.pdb
+C:\Main\ChatServer.Core\obj\Debug\net10.0\ref\ChatServer.Core.dll

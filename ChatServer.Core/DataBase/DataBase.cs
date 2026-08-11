@@ -4,6 +4,8 @@ using MySqlConnector;
 
 namespace ChatServer.Core.DataBase
 {
+    
+
     public sealed class MysqlDataBase : IAsyncDisposable
     {
         // MySqlConnector 

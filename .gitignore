@@ -1,0 +1,47 @@
+# Build output
+**/bin/
+**/obj/
+artifacts/
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Visual Studio / JetBrains / VS Code user state
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+_ReSharper*/
+*.DotSettings.user
+
+# Local .NET CLI state created inside this workspace
+.dotnet-cli/
+
+# Local database credentials and environment files
+.env
+.env.*
+!.env.example
+appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+
+# NuGet packages and generated package files
+*.nupkg
+*.snupkg
+packages/
+
+# Logs, dumps, and temporary files
+*.log
+*.tmp
+*.bak
+*.dmp
+*.stackdump
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini

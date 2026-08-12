@@ -1,46 +1,129 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using ChatServer.Core.Network;
-using ChatServer.App.Packet;
+using System.Diagnostics;
 using System.Net;
 using ChatServer.App.ChatSession;
+using ChatServer.App.DataBase;
+using ChatServer.App.Packet;
+using ChatServer.Core.DataBase;
+using ChatServer.Core.Network;
 
-namespace ChatServer.App
+namespace ChatServer.App;
+
+internal static class Program
 {
-    class Program
+    private const string ConnectionStringVariable =
+        "GAME_DB_CONNECTION_STRING";
+
+    private static async Task Main(string[] args)
     {
-        static void Main(string[] args)
+        string? connectionString =
+            Environment.GetEnvironmentVariable(
+                ConnectionStringVariable);
+
+        if (string.IsNullOrWhiteSpace(connectionString))
         {
-            SessionManager sessionManager = new SessionManager(maxSessionCount: 1000, () => new GameSession());
-            GSPacketHandler packetHandler = new GSPacketHandler();
+            Console.WriteLine(
+                $"Set {ConnectionStringVariable} before starting ChatServer.");
+            return;
+        }
 
-            packetHandler.Initialize();
+        await using var database = new MysqlDataBase(
+            connectionString,
+            workerCount: 4);
 
-            Service chatService = new Service(SERVICE_TYPE.CHAT_SERVER, sessionManager, packetHandler, maxConnection: 1000);
+        if (!await database.CheckConnectAsync())
+        {
+            Console.WriteLine("Database connection check failed.");
+            return;
+        }
 
-            IPAddress iPAddress = IPAddress.Parse("127.0.0.1");
+        var repository = new Repository(database);
 
-            chatService.StartServer(iPAddress, 7777);
+        var sessionManager = new SessionManager(
+            maxSessionCount: 1000,
+            () => new GameSession());
 
+        var packetHandler = new GSPacketHandler();
+        packetHandler.Initialize();
 
-            while (true)
+        var chatService = new Service(
+            SERVICE_TYPE.CHAT_SERVER,
+            sessionManager,
+            packetHandler,
+            maxConnection: 1000);
+
+        IPAddress ipAddress = IPAddress.Parse("127.0.0.1");
+        chatService.StartServer(ipAddress, 7777);
+
+        Console.WriteLine(
+            "ChatServer started. Commands: dbtest, status, quit");
+
+        while (true)
+        {
+            string? input = Console.ReadLine()?.Trim();
+
+            if (string.Equals(
+                    input,
+                    "quit",
+                    StringComparison.OrdinalIgnoreCase))
             {
-                var input = Console.ReadLine();
-                if (input?.ToLower() == "quit")
-                {
-                    break;
-                }
-                else if (input?.ToLower() == "status")
-                {
-                    //Console.WriteLine($"현재 연결 수: {chatService.GetConnectionCount()}");
-                }
+                break;
             }
 
-            Console.WriteLine("서버 종료 중...");
-            chatService.StopServer();
-            //await serverTask;
-            Console.WriteLine("서버가 종료되었습니다.");
+            if (string.Equals(
+                    input,
+                    "dbtest",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                await RunDatabaseTestAsync(repository);
+                continue;
+            }
+
+            if (string.Equals(
+                    input,
+                    "status",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("ChatServer is running.");
+            }
+        }
+
+        Console.WriteLine("Stopping ChatServer...");
+        chatService.StopServer();
+        Console.WriteLine("ChatServer stopped.");
+    }
+
+    private static async Task RunDatabaseTestAsync(
+        Repository repository)
+    {
+        const ulong testUserId = 1;
+
+        using var timeoutSource =
+            new CancellationTokenSource(
+                TimeSpan.FromSeconds(5));
+
+        var stopwatch = Stopwatch.StartNew();
+
+        try
+        {
+            DBTest result = await repository.DBTestAsync(
+                testUserId,
+                timeoutSource.Token);
+
+            stopwatch.Stop();
+
+            Console.WriteLine(
+                $"DB test success: TestValue={result.TestValue}, " +
+                $"elapsed={stopwatch.Elapsed.TotalMilliseconds:F2} ms");
+        }
+        catch (OperationCanceledException)
+            when (timeoutSource.IsCancellationRequested)
+        {
+            Console.WriteLine("DB test timed out after 5 seconds.");
+        }
+        catch (Exception exception)
+        {
+            Console.WriteLine(
+                $"DB test failed: {exception.Message}");
         }
     }
-    
 }

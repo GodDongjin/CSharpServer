@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/PescSixyJY=",
+  "dgSpecHash": "43s1ajAV1cA=",
   "success": true,
-  "projectFilePath": "C:\\Main\\TestClient\\TestClient.csproj",
+  "projectFilePath": "C:\\CSharpServer\\TestClient\\TestClient.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

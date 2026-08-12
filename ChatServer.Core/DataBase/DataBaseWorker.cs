@@ -158,47 +158,81 @@ namespace ChatServer.Core.DataBase
         }
     }
 
-    public sealed class DbWorkerPool
+    public sealed class DbWorkerPool : IAsyncDisposable
     {
         // Worker 관리 리스트
-        private readonly ConcurrentDictionary<Int32, DbWorker> _workerDic = new ConcurrentDictionary<int, DbWorker>();
-        
-        // Worker에 분배하기전 담을 Queue
-        private readonly ConcurrentQueue<IDbJob> _jobQueue = new ConcurrentQueue<IDbJob>();
+        private readonly DbWorker[] _workers;
+        private bool _disposed;
 
-        private readonly Int32 _maxWorkerCount;
-        private readonly SemaphoreSlim _workerSignal;
 
-        public DbWorkerPool(Int32 wroekrCount, MySqlDataSource dataSource)
+        public int WorkerCount => _workers.Length;
+        public DbWorkerPool(Int32 workerCount, MySqlDataSource dataSource)
         {
-            _workerSignal = new SemaphoreSlim(wroekrCount, wroekrCount);
+            
+            if(workerCount <= 0) {
+                throw new ArgumentOutOfRangeException(nameof(workerCount), "Worker 개수는 1개 이상이어야 합나디.");
+            }
 
-            for(int i = 0; i < wroekrCount; i++)
+            ArgumentNullException.ThrowIfNull(dataSource);
+
+            _workers = new DbWorker[workerCount];
+
+            for (int workerID = 0; workerID < workerCount; workerID++)
             {
-                DbWorker _dbWorker = new DbWorker(i, dataSource);
-                if (!_workerDic.TryAdd(_dbWorker.WorkerID, _dbWorker))
-                {
-                    Console.WriteLine($"WorkerDic에 Worker 생성 실패");
-                }
+                DbWorker _dbWorker = new DbWorker(workerID, dataSource);
+
+                _workers[workerID] = _dbWorker;
 
                 _dbWorker.start();
             }
         }
 
-        public async Task<T> RegisterJob<T>(Func<MySqlConnection, CancellationToken, Task<T>> operation, Int32 workerID, CancellationToken token)
+        public Task<T> RegisterJob<T>(Int32 workerID, Func<MySqlConnection, CancellationToken, Task<T>> operation, CancellationToken cancellationToken = default)
         {
-            DbWorker? dbWorker;
+            ArgumentNullException.ThrowIfNull(operation);
+            ObjectDisposedException.ThrowIf(_disposed, this);
 
-            if (!_workerDic.TryGetValue(workerID, out dbWorker))
+            if((UInt32)workerID >= (UInt32)_workers.Length)
             {
-                ArgumentNullException.ThrowIfNullOrEmpty($"workerDic에서 TryGetValue 실패 : {workerID}");
-
-                // 여기서 return 시킬게 뭐가 있지?
+                throw new ArgumentOutOfRangeException(nameof(workerID), workerID, "존재하지 않는 DB Worker ID입니다.");
             }
 
-            return await dbWorker.EnqueueAsync(operation, token);
+            return _workers[workerID].EnqueueAsync(operation, cancellationToken);
         }
 
+        public Task<T> RegisterUserJobAsync<T>(UInt64 userID, Func<MySqlConnection, CancellationToken, Task<T>> operation, CancellationToken cancellationToken = default)
+        {
+            Int32 workerID = GetWorkerID(userID);
+
+            return RegisterJob(workerID, operation, cancellationToken);
+        }
+
+        public Int32 GetWorkerID(UInt64 userID)
+        {
+            return (Int32)((UInt64)userID % (UInt64)_workers.Length);
+        }
+
+        public async Task StopAsync()
+        {
+            Task[] stopTasks = _workers.Select(worker => worker.StopAsync()).ToArray();
+
+            await Task.WhenAll(stopTasks);
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if (_disposed)
+                return;
+
+            _disposed = true;
+
+            await Task.WhenAll(_workers.Select(worker => worker.StopAsync()));
+
+            foreach(DbWorker worker in _workers)
+            {
+                await worker.DisposeAsync();
+            }
+        }
 
     }
 }

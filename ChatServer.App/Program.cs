@@ -10,21 +10,19 @@ namespace ChatServer.App;
 
 internal static class Program
 {
-    private const string ConnectionStringVariable =
-        "GAME_DB_CONNECTION_STRING";
 
     private static async Task Main(string[] args)
     {
-        string? connectionString =
-            Environment.GetEnvironmentVariable(
-                ConnectionStringVariable);
+        string connectionString =
+            "Server=localhost;" +
+            "Port=3306;" +
+            "Database=ngames;" +
+            "User ID=root;" +
+            "Password=Ngames123!@#;" +
+            "Pooling=True;" +
+            "MinimumPoolSize=0;" +
+            "MaximumPoolSize=50;";
 
-        if (string.IsNullOrWhiteSpace(connectionString))
-        {
-            Console.WriteLine(
-                $"Set {ConnectionStringVariable} before starting ChatServer.");
-            return;
-        }
 
         await using var database = new MysqlDataBase(
             connectionString,
@@ -61,6 +59,9 @@ internal static class Program
         {
             string? input = Console.ReadLine()?.Trim();
 
+            //await RunDatabaseTestAsync(repository);
+
+
             if (string.Equals(
                     input,
                     "quit",
@@ -77,6 +78,7 @@ internal static class Program
                 await RunDatabaseTestAsync(repository);
                 continue;
             }
+
 
             if (string.Equals(
                     input,
@@ -95,25 +97,31 @@ internal static class Program
     private static async Task RunDatabaseTestAsync(
         Repository repository)
     {
-        const ulong testUserId = 1;
+        //const ulong testUserId = 1;
 
         using var timeoutSource =
             new CancellationTokenSource(
                 TimeSpan.FromSeconds(5));
 
-        var stopwatch = Stopwatch.StartNew();
-
         try
         {
-            DBTest result = await repository.DBTestAsync(
-                testUserId,
+
+            for(UInt64 i = 0; i < 100000; i++)
+            {
+                var stopwatch = Stopwatch.StartNew();
+
+                DBTest result = await repository.DBTestAsync(
+                i,
                 timeoutSource.Token);
 
-            stopwatch.Stop();
 
-            Console.WriteLine(
-                $"DB test success: TestValue={result.TestValue}, " +
-                $"elapsed={stopwatch.Elapsed.TotalMilliseconds:F2} ms");
+                stopwatch.Stop();
+
+                Console.WriteLine(
+                    $"DB test success: TestValue={result.TestValue}, " +
+                    $"elapsed={stopwatch.Elapsed.TotalMilliseconds:F2} ms");
+            }
+           
         }
         catch (OperationCanceledException)
             when (timeoutSource.IsCancellationRequested)

@@ -18,6 +18,7 @@ namespace ChatServer.Core.Packet
     public readonly struct PacketHeader
     {
         public const ushort HeaderSize = 4;
+        public const ushort MaxPacketSize = ushort.MaxValue;
 
         public ushort Size { get; }
         public ushort Id { get; }

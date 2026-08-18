@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -20,22 +20,22 @@ namespace ChatServer.Core.Network
 
     public class Service : ISessionOwner
     {
-        private readonly SessionManager _sessionManager;
-        private readonly PacketHandler _packetHandler;
+        private readonly SessionManager? _sessionManager;
+        private readonly PacketHandler? _packetHandler;
 
-        private Listen _listen;
+        private Listen? _listen;
 
-        private readonly SocketAsyncEventArgsPool _readPool;
-        private readonly SocketAsyncEventArgsPool _writePool;
+        private readonly SocketAsyncEventArgsPool? _readPool;
+        private readonly SocketAsyncEventArgsPool? _writePool;
 
         private readonly Int32 _maxConnection;
         private readonly SERVICE_TYPE _serviceType;
 
-        public SessionManager SessionManager { get { return _sessionManager; } }
-        public PacketHandler PacketHandler { get { return _packetHandler; } }
-        public SocketAsyncEventArgsPool ReadPool { get { return _readPool; } }
-        public SocketAsyncEventArgsPool WritePool { get { return _writePool; } }
-        public Listen Listen { get { return _listen; }  set { _listen = value; } }
+        public SessionManager? SessionManager { get { return _sessionManager; } }
+        public PacketHandler? PacketHandler { get { return _packetHandler; } }
+        public SocketAsyncEventArgsPool? ReadPool { get { return _readPool; } }
+        public SocketAsyncEventArgsPool? WritePool { get { return _writePool; } }
+        public Listen? Listen { get { return _listen; }  set { _listen = value; } }
 
         public Service(SERVICE_TYPE serviceType, SessionManager sessionManager, PacketHandler packetHandler, Int32 maxConnection)
         {
@@ -63,9 +63,16 @@ namespace ChatServer.Core.Network
             _listen.StartListen(); 
         }
 
-        public void StopServer()
+        public bool StopServer(TimeSpan timeout)
         {
             Listen.StopAsyncListen();
+
+            if (!_sessionManager.AllReleaseSession(timeout))
+                return false;
+
+            _readPool.Dispose();
+            _writePool.Dispose();
+            return true;
         }
 
         public void ReleaseSession(Session session)
@@ -78,3 +85,5 @@ namespace ChatServer.Core.Network
         }
     }
 }
+
+

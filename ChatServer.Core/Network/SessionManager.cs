@@ -1,4 +1,4 @@
-﻿using ChatServer.Core.Interface;
+using ChatServer.Core.Interface;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,13 +13,14 @@ namespace ChatServer.Core.Network
     public class SessionManager
     {
         private readonly ConcurrentQueue<Session> _sessionQueue = new ConcurrentQueue<Session>();
-        private readonly ConcurrentDictionary<Guid, Session> _sessionDic = new ConcurrentDictionary<Guid, Session>();
+        private readonly ConcurrentDictionary<Int64, Session> _sessionDic = new ConcurrentDictionary<Int64, Session>();
 
         private readonly Func<Session> _sessionFactory;
 
         private readonly Int32 _maxSessionCount;
 
         private readonly SemaphoreSlim _maxSessionsEnforcer;
+        private readonly ManualResetEventSlim _allSessionsReleased = new(initialState: true);
 
 
         public SessionManager(Int32 maxSessionCount, Func<Session> sessionFactory) 
@@ -37,7 +38,10 @@ namespace ChatServer.Core.Network
 
         public Session? CreateSession(Socket socket, SocketAsyncEventArgs readArgs, SocketAsyncEventArgs writeArgs, ISessionOwner sessionOwner, IPacketHandler packetHandler)
         {
-            _maxSessionsEnforcer.Wait();
+            if (!_maxSessionsEnforcer.Wait(0))
+            {
+                return null;
+            }
 
             Session? session = null;
 
@@ -50,8 +54,11 @@ namespace ChatServer.Core.Network
 
                 session.Initialize(sessionOwner, packetHandler, socket, readArgs, writeArgs);
 
-                if (!_sessionDic.TryAdd(session._id, session))
+                _allSessionsReleased.Reset();
+
+                if (!_sessionDic.TryAdd(session._sessionID, session))
                 {
+                    session.Disconnect();
                     throw new InvalidOperationException("세션 등록 중 오류 발생");
                 }
 
@@ -67,6 +74,9 @@ namespace ChatServer.Core.Network
                     _sessionQueue.Enqueue(session);
                 }
 
+                if (_sessionDic.IsEmpty)
+                    _allSessionsReleased.Set();
+
                 socket.Close();
                 _maxSessionsEnforcer.Release();
 
@@ -76,13 +86,32 @@ namespace ChatServer.Core.Network
 
         public bool ReleaseSession(Session session)
         {
-            if (!_sessionDic.TryRemove(session._id, out _))
+            if (!_sessionDic.TryRemove(session._sessionID, out _))
                 return false;
 
             session.Reset();
             _sessionQueue.Enqueue(session);
             _maxSessionsEnforcer.Release();
+
+            if (_sessionDic.IsEmpty)
+                _allSessionsReleased.Set();
+
             return true;
+        }
+
+        public bool AllReleaseSession(TimeSpan timeout)
+        {
+            Session[] sessions = _sessionDic.Values.ToArray();
+
+            if (sessions.Length == 0)
+                return true;
+
+            foreach (Session session in sessions)
+                session.Disconnect();
+
+            return _allSessionsReleased.Wait(timeout);
         }
     }
 }
+
+

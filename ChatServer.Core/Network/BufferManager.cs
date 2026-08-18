@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +28,7 @@ namespace ChatServer.Core.Network
         // 뒤쪽에 남아 있는 쓰기 가능 공간 크기
         public Int32 FreeSize => _capacity - _writePos;
 
+        // bufferSize는 PacketHeader.MaxPacketSize(65535)를 항상 수용할 수 있어야 한다.
         public RecvBuffer(int bufferSize = 64 * 1024)
         {
             // 버퍼 사이즈 채크
@@ -181,3 +182,5 @@ namespace ChatServer.Core.Network
         }
     }
 }
+
+

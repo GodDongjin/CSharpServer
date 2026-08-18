@@ -105,7 +105,7 @@ internal static class Program
         }
 
         Console.WriteLine("Stopping ChatServer...");
-        chatService.StopServer();
+        chatService.StopServer(TimeSpan.FromSeconds(5));
         Console.WriteLine("ChatServer stopped.");
     }
 

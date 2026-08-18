@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace ChatServer.Core.Network
 {
-    public class SocketAsyncEventArgsPool
+    public class SocketAsyncEventArgsPool : IDisposable
     {
         private readonly Stack<SocketAsyncEventArgs> _pool;
+        private bool _disposed;
 
         public SocketAsyncEventArgsPool(int capacity)
         {
@@ -23,6 +24,12 @@ namespace ChatServer.Core.Network
 
             lock (_pool)
             {
+                if (_disposed)
+                {
+                    item.Dispose();
+                    return;
+                }
+
                 _pool.Push(item);
             }
         }
@@ -52,5 +59,25 @@ namespace ChatServer.Core.Network
                 }
             }
         }
+
+        public void Dispose()
+        {
+            List<SocketAsyncEventArgs> items;
+
+            lock (_pool)
+            {
+                if (_disposed)
+                    return;
+
+                _disposed = true;
+                items = _pool.ToList();
+                _pool.Clear();
+            }
+
+            foreach (SocketAsyncEventArgs item in items)
+                item.Dispose();
+        }
     }
 }
+
+

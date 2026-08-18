@@ -148,7 +148,7 @@ namespace ChatServer.Core.DataBase
                     try
                     {
                     	// await로 작업 순서 보장
-                        await job.ExcuteAsync(
+                        await job.ExecuteAsync(
                             _dataSource,
                             CancellationToken.None);
                     }

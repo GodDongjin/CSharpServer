@@ -69,20 +69,33 @@ namespace ChatServer.App.Packet
         private bool HandleReqChat(GameSession session, ReadOnlySpan<byte> data)
         {
             REQ_CHAT packet = new REQ_CHAT(data);
+            string name = packet.Name;
+            string message = packet.Message;
 
-            Console.WriteLine($"{packet.Name}의 메시지 : {packet.Message}");
+            // 수신 버퍼가 재사용되기 전에 패킷을 파싱한 뒤,
+            // 실제 처리는 Session의 비동기 작업 Queue에 등록한다.
+            session.EnqueueAsyncJob(
+                () => HandleReqChatAsync(session, name, message));
+
+            return true;
+        }
+
+        private static ValueTask HandleReqChatAsync(
+            GameSession session,
+            string name,
+            string message)
+        {
+
+            Console.WriteLine($"{name}의 메시지 : {message}");
 
             ACK_CHAT ack = new ACK_CHAT(CHAT_STATE.SUCCESS);
 
-            SendBuffer sendBuffer = MakeSendBuffer(
+            session.SendPacket(
                 (ushort)ACK_CHAT.PacketId,
                 ack.GetPayloadSize(),
-                ack.WriteData
-            );
+                ack.WriteData);
 
-            session.Send(sendBuffer);
-
-            return true;
+            return ValueTask.CompletedTask;
         }
     }
 }

@@ -30,6 +30,7 @@ namespace ChatServer.Core.DataBase
 
         // 작업이 들어올 때 worker를 깨울 신호
         private readonly SemaphoreSlim _jobSignal = new(0);
+        private readonly SemaphoreSlim _jobMaxSignal;
 
         private readonly object _stateLock = new object();
 
@@ -47,12 +48,20 @@ namespace ChatServer.Core.DataBase
         public int PendingJobCount => _jobQueue.Count;
 
         // DBWorker 초기화 함수 : WorkerID 와 MySqlDataSource 등록.
-        public DbWorker(int workerId, MySqlDataSource dataSource)
+        public DbWorker(int workerId, MySqlDataSource dataSource, Int32 maxJobCount)
         {
             ArgumentNullException.ThrowIfNull(dataSource);
 
+            if (maxJobCount <= 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(maxJobCount));
+            }
+
             _workerID = workerId;
             _dataSource = dataSource;
+
+            _jobMaxSignal = new SemaphoreSlim(maxJobCount, maxJobCount);
         }
 
 
@@ -83,34 +92,47 @@ namespace ChatServer.Core.DataBase
         {
             ArgumentNullException.ThrowIfNull(operation);
 
-            // job 생성
-            var job = new DbJob<T>(operation, cancellationToken);
-
-            // 경쟁 상태 방지 Lock
-            lock(_stateLock)
+            if(!_jobMaxSignal.Wait(0))
             {
-                ObjectDisposedException.ThrowIf(_disposed, this);
-
-                if(!_isStart)
-                {
-                    throw new InvalidOperationException($"DB Worker {_workerID}가 시작되지 않았습니다.");
-                }
-
-                if(!_acceptingJobs)
-                {
-                    throw new InvalidOperationException($"DB Worker {_workerID}가 종료 중입니다.");
-                }
-
-                // jobQueue에 job 등록.
-                _jobQueue.Enqueue(job);
-
-
-                // 대기 중인 Worker 깨움
-                _jobSignal.Release();
+                return Task.FromException<T>(new InvalidOperationException($"DB Worker {_workerID}의 작업 큐가 가득 찼습니다."));
             }
 
-            // job Task 완료 결과 받기위한 Task 반환.
-            return job.Completion;
+            try
+            {
+                var job = new DbJob<T>(operation, cancellationToken);
+
+
+                lock (_stateLock)
+                {
+                    ObjectDisposedException.ThrowIf(_disposed, this);
+
+                    if (!_isStart)
+                    {
+                        throw new InvalidOperationException($"DB Worker {_workerID}가 시작되지 않았습니다.");
+                    }
+
+                    if (!_acceptingJobs)
+                    {
+                        throw new InvalidOperationException($"DB Worker {_workerID}가 종료 중입니다.");
+                    }
+					
+					// jobQueue에 job 등록.
+                    _jobQueue.Enqueue(job);
+
+
+                    // 대기중인 worker 깨움.
+                    _jobSignal.Release();
+                }
+
+				// job Task 완료 결과 받기위한 Task 반환.
+                return job.Completion;
+            }
+            catch
+            {
+                // Enqueue되지 못했으므로 확보한 자리 반환
+                _jobMaxSignal.Release();
+                throw;
+            }           
         }
 
 
@@ -123,10 +145,17 @@ namespace ChatServer.Core.DataBase
 
                 if(_jobQueue.TryDequeue(out IDbJob? job))
                 {
-                    // await로 작업 순서 보장
-                    await job.ExecuteAsync(_dataSource, CancellationToken.None);
-
-                    continue;
+                    try
+                    {
+                    	// await로 작업 순서 보장
+                        await job.ExcuteAsync(
+                            _dataSource,
+                            CancellationToken.None);
+                    }
+                    finally
+                    {
+                        _jobMaxSignal.Release();
+                    }
                 }
 
                 lock(_stateLock)
@@ -182,6 +211,7 @@ namespace ChatServer.Core.DataBase
 
             _disposed = true;
             _jobSignal.Dispose();
+            _jobMaxSignal.Dispose();
         }
     }
 
@@ -218,7 +248,7 @@ namespace ChatServer.Core.DataBase
 
             for (int workerID = 0; workerID < workerCount; workerID++)
             {
-                DbWorker _dbWorker = new DbWorker(workerID, dataSource);
+                DbWorker _dbWorker = new DbWorker(workerID, dataSource, maxJobCount: 10_000);
 
                 _workers[workerID] = _dbWorker;
 
@@ -247,6 +277,8 @@ namespace ChatServer.Core.DataBase
         {
             // userID를 이용해 workerID를 구한다.
             Int32 workerID = GetWorkerID(userID);
+			
+			Console.WriteLine($"Register WorkerID : {workerID}");
 
             // worker에 작업 함수 및 취소 토큰 등록
             return RegisterJob(workerID, operation, cancellationToken);

@@ -8,11 +8,24 @@ using MySqlConnector;
 
 namespace ChatServer.Core.DataBase
 {
+    ////////////////////////////////////////////////////////////////
+    ///
+    /// Class : DbWorker
+    /// Info : DB 작업을 순차 처리하는 비동기 Worker
+    ///        JobQueue에 작업할 Job을 등록하고 Worker가 Job을 하나씩 꺼내어 작업을 수행한다.
+    ///        EnqueueAsync() :  JobQueue에 작업을 등록
+    ///        RunAsync() :  worker가 JobQueue에서 job을 하나씩 꺼내어 작업 진행.
+    ///        StopAsync() : 새 작업 등록을 막고 진행 중인 기존 Queue 작업이 끝날 때까지 대기한 후 Worker를 종료한다.
+    ///        
+    ////////////////////////////////////////////////////////////////
     internal sealed class DbWorker : IAsyncDisposable
     {
         private readonly Int32 _workerID;
+        
+        // DataBase의 MySqlDataSource를 담을 변수
         private readonly MySqlDataSource _dataSource;
 
+        // Job 순차 등록 Queue
         private readonly ConcurrentQueue<IDbJob> _jobQueue = new();
 
         // 작업이 들어올 때 worker를 깨울 신호
@@ -20,15 +33,20 @@ namespace ChatServer.Core.DataBase
 
         private readonly object _stateLock = new object();
 
+        // 작업을 처리해줄 worker Task
         private Task? _workerTask;
 
+        // worker 실행
         private bool _isStart;
+
+        // 작업 등록 허용 flag
         private bool _acceptingJobs;
         private bool _disposed;
 
         public int WorkerID => _workerID;
         public int PendingJobCount => _jobQueue.Count;
 
+        // DBWorker 초기화 함수 : WorkerID 와 MySqlDataSource 등록.
         public DbWorker(int workerId, MySqlDataSource dataSource)
         {
             ArgumentNullException.ThrowIfNull(dataSource);
@@ -38,7 +56,8 @@ namespace ChatServer.Core.DataBase
         }
 
 
-        public void start()
+        // Worker 실행 함수 : worker Task 실행 시킨다.
+        public void Start()
         {
             lock(_stateLock)
             {
@@ -57,13 +76,17 @@ namespace ChatServer.Core.DataBase
             Console.WriteLine($"DB Worker {_workerID} 시작");
         }
 
+        // 외부에서 Job 등록 함수
+        // Func<MySqlConnection, CancellationToken, Task<T>> operation : 작업할 함수 등록 
+        // CancellationToken cancellationToken = default : Task 취소 토큰
         public Task<T> EnqueueAsync<T>(Func<MySqlConnection, CancellationToken, Task<T>> operation, CancellationToken cancellationToken = default)
         {
             ArgumentNullException.ThrowIfNull(operation);
 
+            // job 생성
             var job = new DbJob<T>(operation, cancellationToken);
 
-
+            // 경쟁 상태 방지 Lock
             lock(_stateLock)
             {
                 ObjectDisposedException.ThrowIf(_disposed, this);
@@ -78,13 +101,15 @@ namespace ChatServer.Core.DataBase
                     throw new InvalidOperationException($"DB Worker {_workerID}가 종료 중입니다.");
                 }
 
+                // jobQueue에 job 등록.
                 _jobQueue.Enqueue(job);
 
 
-                // 대기중인 worker 깨움.
+                // 대기 중인 Worker 깨움
                 _jobSignal.Release();
             }
 
+            // job Task 완료 결과 받기위한 Task 반환.
             return job.Completion;
         }
 
@@ -99,7 +124,7 @@ namespace ChatServer.Core.DataBase
                 if(_jobQueue.TryDequeue(out IDbJob? job))
                 {
                     // await로 작업 순서 보장
-                    await job.ExcuteAsync(_dataSource, CancellationToken.None);
+                    await job.ExecuteAsync(_dataSource, CancellationToken.None);
 
                     continue;
                 }
@@ -121,6 +146,7 @@ namespace ChatServer.Core.DataBase
         {
             Task? workerTask;
 
+            // Worker를 정리하기 전에 Lock을 걸어 경쟁 상태를 막는다.
             lock(_stateLock)
             {
                 if (!_isStart)
@@ -136,6 +162,7 @@ namespace ChatServer.Core.DataBase
                 workerTask = _workerTask;
             }
 
+            // 진행 중인 worker가 있으면 작업이 끝날 때까지 대기.
             if(workerTask is not null)
                 await workerTask;
 
@@ -158,19 +185,31 @@ namespace ChatServer.Core.DataBase
         }
     }
 
+    ////////////////////////////////////////////////////////////////
+    ///
+    /// Class : DbWorkerPool
+    /// Info : DbWorker를 관리하는 Pool이며 Worker 생성 및 생명주기를 관리한다.
+    ///        DbWorkerPool() 생성자 : Worker 개수를 지정해 미리 Worker를 생성한다.
+    ///        RegisterJob() : 알맞은 Worker ID에 Job을 등록한다.
+    ///        RegisterUserJobAsync() : 자동으로 Worker를 선택해 Job을 등록한다.
+    ///        
+    ////////////////////////////////////////////////////////////////
+
     public sealed class DbWorkerPool : IAsyncDisposable
     {
-        // Worker 관리 리스트
+        // Worker 관리 배열
         private readonly DbWorker[] _workers;
         private bool _disposed;
 
-
         public int WorkerCount => _workers.Length;
+
+        // WorkerPool 생성자 : Worker를 생성하고 WorkerPool에 등록한다.
+        // Int32 workerCount : 생성할 worker 개수
+        // MySqlDataSource dataSource : worker에 등록할 dataSource
         public DbWorkerPool(Int32 workerCount, MySqlDataSource dataSource)
-        {
-            
+        {            
             if(workerCount <= 0) {
-                throw new ArgumentOutOfRangeException(nameof(workerCount), "Worker 개수는 1개 이상이어야 합나디.");
+                throw new ArgumentOutOfRangeException(nameof(workerCount), "Worker 개수는 1개 이상이어야 합니다.");
             }
 
             ArgumentNullException.ThrowIfNull(dataSource);
@@ -183,7 +222,7 @@ namespace ChatServer.Core.DataBase
 
                 _workers[workerID] = _dbWorker;
 
-                _dbWorker.start();
+                _dbWorker.Start();
             }
         }
 
@@ -200,10 +239,16 @@ namespace ChatServer.Core.DataBase
             return _workers[workerID].EnqueueAsync(operation, cancellationToken);
         }
 
+        // Job 등록 외부 함수이며 동일 userID는 항상 같은 워커로 매핑되어 그 유저의 작업 처리 순서를 보장한다.
+        // UInt64 userID : 동일 사용자의 작업을 같은 Worker로 보내기 위한 라우팅 키
+        // Func<MySqlConnection, CancellationToken, Task<T>> operation : worker에 등록할 job 함수.
+        // CancellationToken cancellationToken = default : 취소 토큰
         public Task<T> RegisterUserJobAsync<T>(UInt64 userID, Func<MySqlConnection, CancellationToken, Task<T>> operation, CancellationToken cancellationToken = default)
         {
+            // userID를 이용해 workerID를 구한다.
             Int32 workerID = GetWorkerID(userID);
 
+            // worker에 작업 함수 및 취소 토큰 등록
             return RegisterJob(workerID, operation, cancellationToken);
         }
 

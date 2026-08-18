@@ -10,21 +10,26 @@ namespace ChatServer.App;
 
 internal static class Program
 {
-    private const string ConnectionStringVariable =
-        "GAME_DB_CONNECTION_STRING";
+    
 
     private const int ConcurrentTestRequestCount = 100_000;
 
     private static async Task Main(string[] args)
     {
-        string? connectionString =
-            Environment.GetEnvironmentVariable(
-                ConnectionStringVariable);
+        string connectionString =
+            "Server=192.168.75.13;" +
+            "Port=3306;" +
+            "Database=gamedb;" +
+            "User ID=admin;" +
+            "Password=ngames1@@;" +
+            "Pooling=True;" +
+            "MinimumPoolSize=0;" +
+            "MaximumPoolSize=50;";
 
         if (string.IsNullOrWhiteSpace(connectionString))
         {
             Console.WriteLine(
-                $"Set {ConnectionStringVariable} before starting ChatServer.");
+                $"Set {connectionString} before starting ChatServer.");
             return;
         }
 
